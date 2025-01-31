@@ -127,12 +127,15 @@ export const likeUnlikePost = async (req, res) => {
             await Post.updateOne({_id: id}, {$push: {likes: userId}}); //add user to post's likes array
             await User.updateOne({_id:userId}, {$push: {likedPosts: id}}); //add post to user's likedPosts array
 
-            const notification = new Notification({
-                type: "like",
-                from: userId,
-                to: post.user
-            })
-            await notification.save();
+            if(userId.toString() !== post.user.toString()){
+                const notification = new Notification({
+                    type: "like",
+                    from: userId,
+                    to: post.user
+                })
+                await notification.save();
+            } //this is how we create a notification when someone likes a post and the post is not their own
+           
 
             res.status(200).json({message: "Post liked"});
         }
