@@ -121,11 +121,14 @@ export const likeUnlikePost = async (req, res) => {
             //unlike
             await Post.updateOne({_id: id}, {$pull: {likes: userId}}); //moglo je i await post.updateOne({$pull: {likes: userId}}); ali cisto da demonstriram da se moze i ovako
             await User.updateOne({_id:userId}, {$pull: {likedPosts: id}}); //remove post from user's likedPosts array
-            res.status(200).json({message: "Post unliked"});
+            
+            const updatedLikes = post.likes.filter((id)=>id.toString() !== userId.toString());
+            res.status(200).json(updatedLikes);
         } else{
             //like
-            await Post.updateOne({_id: id}, {$push: {likes: userId}}); //add user to post's likes array
+            post.likes.push(userId);
             await User.updateOne({_id:userId}, {$push: {likedPosts: id}}); //add post to user's likedPosts array
+            await post.save();
 
             if(userId.toString() !== post.user.toString()){
                 const notification = new Notification({
@@ -136,8 +139,8 @@ export const likeUnlikePost = async (req, res) => {
                 await notification.save();
             } //this is how we create a notification when someone likes a post and the post is not their own
            
-
-            res.status(200).json({message: "Post liked"});
+            const updatedLikes = post.likes;
+            res.status(200).json(updatedLikes);
         }
 
     } catch(error){
