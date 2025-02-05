@@ -22,7 +22,7 @@ cloudinary.config({
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json()); //a middleware method inbuilt in express to recognize the incoming Request Object as a JSON Object. (in our case to parse req.body, which is in JSON format and comes from the frontend)
+app.use(express.json({limit: "5mb"})); //a middleware method inbuilt in express to recognize the incoming Request Object as a JSON Object. (in our case to parse req.body, which is in JSON format and comes from the frontend)
 app.use(express.urlencoded({extended: true})); // to parse form data (urlencoded))
 app.use(cookieParser());
 
