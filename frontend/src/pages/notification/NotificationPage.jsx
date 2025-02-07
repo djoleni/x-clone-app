@@ -19,7 +19,7 @@ const NotificationPage = () => {
 			try {
 				const res = await fetch ('/api/notifications');
 
-				const data = res.json();
+				const data = await res.json();
 
 				if (!res.ok) throw new Error(data.error || "Something went wrong");
 
@@ -38,7 +38,7 @@ const NotificationPage = () => {
 					method: "DELETE"
 				})
 
-				const data = res.json();
+				const data = await res.json();
 				if (!res.ok) throw new Error(data.error || "Something went wrong");
 				return data;
 
@@ -54,7 +54,7 @@ const NotificationPage = () => {
 			toast.success('Notifications deleted successfuly')
 			queryClient.invalidateQueries({queryKey:['notifications']})
 		},
-		onError: () => {
+		onError: (error) => {
 			toast.error(error.message)
 		}
 

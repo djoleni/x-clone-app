@@ -82,7 +82,7 @@ const Post = ({ post }) => {
 				
 			})
 		},
-		onError : () => {
+		onError: (error) => {
 			toast.error(error.message)
 		}
 
