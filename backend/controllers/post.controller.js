@@ -72,37 +72,35 @@ export const deletePost = async (req, res) => {
 }
 
 export const commentOnPost = async (req, res) => {
-    try{
-        const {id} = req.params;
-        const {text} = req.body;
+    try {
+        const { id } = req.params;
+        const { text } = req.body;
         const userId = req.user._id;
 
-        if(!text){
-            return res.status(400).json({error: "Text field is required"});
+        if (!text) {
+            return res.status(400).json({ error: "Text field is required" });
         }
 
         const post = await Post.findById(id);
-
-        if(!post){
-            return res.status(404).json({error: "Post not found"});
+        if (!post) {
+            return res.status(404).json({ error: "Post not found" });
         }
 
-        const comment = {user: userId, text};
-
+        const comment = { user: userId, text };
         post.comments.push(comment);
         await post.save();
 
+        // Fetch the post again with populated comments
+        const populatedPost = await Post.findById(id).populate({
+            path: 'comments.user',
+            select: '-password'
+        });
 
-        res.status(200).json(post);
-
-
-    } catch(error){
+        res.status(200).json(populatedPost.comments);
+    } catch (error) {
         console.log("Error in commentOnPost controller", error.message);
-        res.status(500).json({error: error.message});
-
+        res.status(500).json({ error: error.message });
     }
-
-
 }
 
 export const likeUnlikePost = async (req, res) => {
