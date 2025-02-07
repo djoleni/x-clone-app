@@ -17,7 +17,7 @@ function App() {
     queryKey: ['authUser'], //za referenciranje ovog querija u drugim fajlovima
     queryFn: async() => {
       try{
-        const res = await fetch('api/auth/me');
+        const res = await fetch('/api/auth/me');
         const data = await res.json();
         if(data.error) return null;
         
@@ -44,21 +44,20 @@ function App() {
 
 
   return (
-    <>
-      <div className="flex max-w-6xl mx-auto">
-        {authUser && <Sidebar/>}
-        <Routes>
-          <Route path="/" element={authUser ? <HomePage/> : <Navigate to="/login"/>} />
-          <Route path="/login" element={!authUser ? <LoginPage/> : <Navigate to="/"/>}/>
-          <Route path="/signup" element={!authUser ? <SignUpPage/> : <Navigate to="/"/>}/>
-          <Route path="/notifications" element={authUser ? <NotificationPage/> : <Navigate to="/login"/>}/>
-          <Route path="/profile/:username" element={authUser ? <ProfilePage/> : <Navigate to="/login"/>}></Route>
-        </Routes>
-        {authUser && <RightPanel/>}
-        <Toaster />
-      </div>  
-    </>
-  )
+		<div className='flex max-w-6xl mx-auto'>
+			{/* Common component, bc it's not wrapped with Routes */}
+			{authUser && <Sidebar />}
+			<Routes>
+				<Route path='/' element={authUser ? <HomePage /> : <Navigate to='/login' />} />
+				<Route path='/login' element={!authUser ? <LoginPage /> : <Navigate to='/' />} />
+				<Route path='/signup' element={!authUser ? <SignUpPage /> : <Navigate to='/' />} />
+				<Route path='/notifications' element={authUser ? <NotificationPage /> : <Navigate to='/login' />} />
+				<Route path='/profile/:username' element={authUser ? <ProfilePage /> : <Navigate to='/login' />} />
+			</Routes>
+			{authUser && <RightPanel />}
+			<Toaster />
+		</div>
+	)
 }
 
 export default App
