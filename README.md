@@ -1,10 +1,10 @@
 ### Login page
 
-![Login ekran](./frontend/public/project-media/1. login.png)
+![Login ekran](./frontend/public/project-media/1.%20login.png)
 
 ### Signup page
 
-![Signup ekran](./frontend/public/project-media/2. signup.png)
+![Signup ekran](./frontend/public/project-media/2.%20signup.png)
 
 ### Homepage
 
@@ -26,7 +26,7 @@
 
 ![Notifications](./frontend/public/project-media/7.%20notifications.png)
 
-### Profile Page (Druga verzija)
+### Profile Page 2
 
 ![Profile Page 2](./frontend/public/project-media/8.%20profile%20page%202.png)
 
@@ -46,10 +46,10 @@
 
 ![Comment Added](./frontend/public/project-media/12.%20comment%20added.png)
 
-### Video demonstracija - app process
+### Video demonstracija - app process (View Raw - download)
 
 [▶️ Pogledaj video - App Process](./frontend/public/project-media/app%20process%20record.mp4)
 
-### Video demonstracija - login/logout
+### Video demonstracija - login/logout (View Raw - download)
 
 [▶️ Pogledaj video - Login/Logout](./frontend/public/project-media/login%20logout%20record.mp4)
