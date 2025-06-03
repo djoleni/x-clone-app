@@ -1,10 +1,52 @@
+# MERN Stack Projekat: X Clone
+
+## Neke funkcionalnosti
+
+- ⚛️ **Tehnologije**: React.js, Node.js, Express, MongoDB, Tailwind CSS
+- 🔐 **Autentifikacija** pomoću JSON Web Tokena (JWT)
+- ⚡ **React Query** za dohvat podataka, keširanje i optimizaciju
+- 👥 **Preporučeni korisnici** za praćenje
+- ✍️ **Kreiranje objava**
+- 🗑️ **Brisanje objava** (samo ako si autor)
+- 💬 **Komentarisanje** objava
+- ❤️ **Lajkovanje** objava
+- 📝 **Izmena informacija profila**
+- 🖼️ **Promena profilne i naslovne slike**
+- 📷 **Otpremanje slika** putem Cloudinary servisa
+- 🔔 **Slanje notifikacija**
+- 🌐 **Pripremljeno za deployment**
+
+### .env setup
+
+```js
+MONGO_URI=...
+PORT=...
+JWT_SECRET=...
+NODE_ENV=...
+CLOUDINARY_CLOUD_NAME=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_API_SECRET=...
+```
+
+### Build
+
+```shell
+npm run build
+```
+
+### Start 
+
+```shell
+npm start
+```
+
 ### Login page
 
-![Login ekran](./frontend/public/project-media/1.%20login.png)
+![Login page](./frontend/public/project-media/1.%20login.png)
 
 ### Signup page
 
-![Signup ekran](./frontend/public/project-media/2.%20signup.png)
+![Signup page](./frontend/public/project-media/2.%20signup.png)
 
 ### Homepage
 
