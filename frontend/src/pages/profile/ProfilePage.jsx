@@ -83,13 +83,12 @@ const ProfilePage = () => {
 				<div className='flex flex-col'>
 					{!isLoading && !isRefetching && user && (
 						<>
-							<div className='flex gap-10 px-4 py-2 items-center'>
+							<div className='flex gap-10 px-4 py-2 items-center mb-3 mt-2'>
 								<Link to='/'>
 									<FaArrowLeft className='w-4 h-4' />
 								</Link>
 								<div className='flex flex-col'>
-									<p className='font-bold text-lg'>{user?.fullName}</p>
-									<span className='text-sm text-slate-500'>{POSTS?.length} posts</span>
+									<p className='font-bold text-lg'>{'@' + user?.username}</p>
 								</div>
 							</div>
 							{/* COVER IMG */}
